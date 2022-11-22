@@ -16,7 +16,7 @@ function Note({ onDelete }: NoteProps) {
     <>
       <Row className='align-items-center mb-4'>
         <Col>
-          <h1>{note?.title}</h1>
+          <h1 className='text-capitalize'>{note?.title}</h1>
         </Col>
         <Col xs='auto'>
           <Stack gap={2} direction='horizontal'>
@@ -37,8 +37,11 @@ function Note({ onDelete }: NoteProps) {
           </Stack>
         </Col>
       </Row>
-      {/* TODO: remove error */}
-      <ReactMarkdown>{note?.markdown}</ReactMarkdown>
+      {/* need to check for Type string to render ReactMarkdown
+       because it only accepts type string for children  */}
+      {typeof note.markdown === "string" && (
+        <ReactMarkdown children={note?.markdown} />
+      )}
     </>
   );
 }
