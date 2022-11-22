@@ -40,7 +40,7 @@ function Note({ onDelete }: NoteProps) {
       {/* need to check for Type string to render ReactMarkdown
        because it only accepts type string for children  */}
       {typeof note.markdown === "string" && (
-        <ReactMarkdown children={note?.markdown} />
+        <ReactMarkdown className='mt-5' children={note?.markdown} />
       )}
     </>
   );

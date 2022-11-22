@@ -24,12 +24,12 @@ function NoteList({ notes }: NoteListProps) {
     <>
       <Row className='align-items-center mb-4'>
         <Col>
-          <h1 className='mb-5'>
+          <h1 className='mb-5 w-auto'>
             <GiPencil size={30} /> NoteTaker
           </h1>
         </Col>
         <Col xs='auto'>
-          <Stack gap={2} direction='horizontal'>
+          <Stack direction='horizontal'>
             <Link to='/new'>
               <Button variant='primary'>Create Note</Button>
             </Link>

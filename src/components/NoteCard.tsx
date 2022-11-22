@@ -17,7 +17,7 @@ function NoteCard({ id, title }: SimplifiedNote) {
       <Card.Body>
         <Stack
           gap={2}
-          className='align-items-center justify-content-center h-100'>
+          className='align-items-center justify-content-center h-auto'>
           <span className='fs-5 fw-bolder text-capitalize'>
             {title}
           </span>
