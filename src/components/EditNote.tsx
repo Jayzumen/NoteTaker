@@ -1,7 +1,23 @@
-import React from "react";
+import { NoteData } from "../App";
+import { useNote } from "../hooks/useNote";
+import NoteForm from "./NoteForm";
 
-function EditNote() {
-  return <div>EditNote</div>;
+type EditNoteProps = {
+  onSubmit: (id?: string, data?: NoteData) => void;
+};
+
+function EditNote({ onSubmit }: EditNoteProps) {
+  const note = useNote();
+  return (
+    <>
+      <h1 className='my-4'>Edit Note</h1>
+      <NoteForm
+        title={note.title}
+        markdown={note.markdown}
+        onSubmit={(data) => onSubmit(note.id, data)}
+      />
+    </>
+  );
 }
 
 export default EditNote;
