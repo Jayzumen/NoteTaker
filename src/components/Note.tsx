@@ -2,7 +2,6 @@ import { Button, Row, Stack } from "react-bootstrap";
 import { Col } from "react-bootstrap";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { Link, useNavigate } from "react-router-dom";
-import rehypeRaw from "rehype-raw";
 import { useNote } from "../hooks/useNote";
 import rehypeHighlight from "rehype-highlight";
 
@@ -43,7 +42,7 @@ function Note({ onDelete }: NoteProps) {
        because it only accepts type string for children  */}
       {typeof note?.markdown === "string" && (
         <ReactMarkdown
-          rehypePlugins={[rehypeRaw, rehypeHighlight]}
+          rehypePlugins={[rehypeHighlight]}
           className='mt-5'>
           {note?.markdown}
         </ReactMarkdown>
