@@ -12,9 +12,9 @@ function EditNote({ onSubmit }: EditNoteProps) {
     <>
       <h1 className='my-4'>Edit Note</h1>
       <NoteForm
-        title={note.title}
-        markdown={note.markdown}
-        onSubmit={(data) => onSubmit(note.id, data)}
+        title={note?.title}
+        markdown={note?.markdown}
+        onSubmit={(data) => onSubmit(note?.id, data)}
       />
     </>
   );

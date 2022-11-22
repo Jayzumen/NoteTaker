@@ -2,7 +2,6 @@ import { useMemo, useState } from "react";
 import { Button, Col, Form, Row, Stack } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import NoteCard, { SimplifiedNote } from "./NoteCard";
-import { GiPencil } from "react-icons/gi";
 
 type NoteListProps = {
   notes?: SimplifiedNote[];
@@ -24,9 +23,7 @@ function NoteList({ notes }: NoteListProps) {
     <>
       <Row className='align-items-center mb-4'>
         <Col>
-          <h1 className='mb-5 w-auto'>
-            <GiPencil size={30} /> NoteTaker
-          </h1>
+          <h1 className='mb-5 w-auto'>NoteTaker</h1>
         </Col>
         <Col xs='auto'>
           <Stack direction='horizontal'>
