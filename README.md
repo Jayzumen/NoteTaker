@@ -15,4 +15,7 @@ Whenever I needed to look something up while programming I just added a Note in 
 
 ## Usage
 
+To create a note you need to enter a Title and Markdown text as a description of the note.
+If you need to edit the note, you can do so by clicking the edit button on the notepage.
+If the note is note useful anymore you can delete it, by clicking the delete button.
 Everyone visiting this project can store notes or search for existing notes.
