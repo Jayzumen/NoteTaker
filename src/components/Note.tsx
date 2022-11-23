@@ -3,6 +3,8 @@ import { Col } from "react-bootstrap";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { Link, useNavigate } from "react-router-dom";
 import { useNote } from "../hooks/useNote";
+import remarkGfm from "remark-gfm";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 
 type NoteProps = {
   onDelete: (id?: string) => void;
@@ -40,7 +42,26 @@ function Note({ onDelete }: NoteProps) {
       {/* need to check for Type string to render ReactMarkdown
        because it only accepts type string for children  */}
       {typeof note?.markdown === "string" && (
-        <ReactMarkdown className='mt-5'>
+        <ReactMarkdown
+          remarkPlugins={[remarkGfm]}
+          components={{
+            code({ node, inline, className, children, ...props }) {
+              const match = /language-(\w+)/.exec(className || "");
+              return !inline && match ? (
+                // @ts-ignore
+                <SyntaxHighlighter
+                  children={String(children).replace(/\n$/, "")}
+                  language={match[1]}
+                  PreTag='div'
+                  {...props}
+                />
+              ) : (
+                <code className={className} {...props}>
+                  {children}
+                </code>
+              );
+            },
+          }}>
           {note?.markdown}
         </ReactMarkdown>
       )}
