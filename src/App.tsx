@@ -32,29 +32,34 @@ function App() {
   const [notes, setNotes] = useState<Note[]>([]);
   const notesCollection = collection(db, "Notes");
 
+  // maps through all notes
   const notesToRender = useMemo(() => {
     return notes.map((note) => {
       return { ...note };
     });
   }, [notes]);
 
+  // uses input in NoteForm and creates new Note in Firestore
   async function createNote(noteData: NoteData) {
     await addDoc(notesCollection, { ...noteData });
     // console.log(`new note created at ${newNote.path}`);
   }
 
+  // looks for id and data of Note and updates it in Firestore based on added input
   async function updateNote(id?: string, docData?: any) {
     const getNote = doc(db, `Notes/${id}`);
     await setDoc(getNote, docData, { merge: true });
     // console.log("the note has been updated");
   }
 
+  // looks for id of note in firestore database and deletes it
   async function deleteNote(id?: string) {
     const document = doc(db, `Notes/${id}`);
     await deleteDoc(document);
     // console.log("Note was deleted");
   }
 
+  // maps through all Notes stored in Firestore and stores them in setNotes
   useEffect(() => {
     onSnapshot(
       notesCollection,
@@ -71,7 +76,6 @@ function App() {
     );
   }, []);
 
-  // console.log(notes, "notes");
   return (
     <Container className='my-5'>
       <Routes>
@@ -80,7 +84,7 @@ function App() {
           element={<NoteList notes={notesToRender} />}
         />
         <Route
-          path='/new'
+          path='/create'
           element={<NewNote onSubmit={createNote} />}
         />
         <Route
@@ -92,7 +96,8 @@ function App() {
             element={<EditNote onSubmit={updateNote} />}
           />
         </Route>
-        <Route path='/*' element={<Navigate to='/' />} />
+        {/* invalid path redirects to homescreen */}
+        <Route path='*' element={<Navigate to='/' replace />} />
       </Routes>
     </Container>
   );

@@ -10,6 +10,7 @@ type NoteListProps = {
 function NoteList({ notes }: NoteListProps) {
   const [title, setTitle] = useState("");
 
+  // filter function to filter through notes based on input
   const filteredNotes = useMemo(() => {
     return notes?.filter((note) => {
       return (
@@ -27,7 +28,7 @@ function NoteList({ notes }: NoteListProps) {
         </Col>
         <Col xs='auto'>
           <Stack direction='horizontal'>
-            <Link to='/new'>
+            <Link to='/create'>
               <Button variant='primary'>Create Note</Button>
             </Link>
           </Stack>
@@ -49,6 +50,7 @@ function NoteList({ notes }: NoteListProps) {
       </Form>
 
       <Row xs={1} sm={2} xl={4} className='gap-3'>
+        {/* mapping through filtered Notes and only show matching notes */}
         {filteredNotes?.map((note) => (
           <Col key={note.id}>
             <NoteCard id={note.id} title={note.title} />

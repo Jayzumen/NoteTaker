@@ -16,6 +16,7 @@ function NoteForm({
   const markdownRef = useRef<HTMLTextAreaElement>(null);
   const navigate = useNavigate();
 
+  // stores input value in ref and stores value for title and markdown with onSubmit
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
     onSubmit({
