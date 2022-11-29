@@ -49,7 +49,7 @@ function NoteList({ notes }: NoteListProps) {
         </Row>
       </Form>
 
-      <Row xs={1} sm={2} xl={4} className='gap-3'>
+      <Row xs={1} sm={2} md={3} xl={4} className='gap-3'>
         {/* mapping through filtered Notes and only show matching notes */}
         {filteredNotes?.map((note) => (
           <Col key={note.id}>
