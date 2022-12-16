@@ -61,40 +61,26 @@ function App() {
 
   // maps through all Notes stored in Firestore and stores them in setNotes
   useEffect(() => {
-    onSnapshot(
-      notesCollection,
-      (snapshot: QuerySnapshot<DocumentData>) => {
-        setNotes(
-          snapshot.docs.map((doc) => {
-            return {
-              id: doc.id,
-              ...doc.data(),
-            };
-          })
-        );
-      }
-    );
+    onSnapshot(notesCollection, (snapshot: QuerySnapshot<DocumentData>) => {
+      setNotes(
+        snapshot.docs.map((doc) => {
+          return {
+            id: doc.id,
+            ...doc.data(),
+          };
+        })
+      );
+    });
   }, []);
 
   return (
-    <Container className='my-5'>
+    <Container className='my-5 mx-auto'>
       <Routes>
-        <Route
-          path='/'
-          element={<NoteList notes={notesToRender} />}
-        />
-        <Route
-          path='/create'
-          element={<NewNote onSubmit={createNote} />}
-        />
-        <Route
-          path='/:id'
-          element={<NoteLayout notes={notesToRender} />}>
+        <Route path='/' element={<NoteList notes={notesToRender} />} />
+        <Route path='/create' element={<NewNote onSubmit={createNote} />} />
+        <Route path='/:id' element={<NoteLayout notes={notesToRender} />}>
           <Route index element={<Note onDelete={deleteNote} />} />
-          <Route
-            path='edit'
-            element={<EditNote onSubmit={updateNote} />}
-          />
+          <Route path='edit' element={<EditNote onSubmit={updateNote} />} />
         </Route>
         {/* invalid path redirects to homescreen */}
         <Route path='*' element={<Navigate to='/' replace />} />

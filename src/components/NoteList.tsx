@@ -14,11 +14,26 @@ function NoteList({ notes }: NoteListProps) {
   const filteredNotes = useMemo(() => {
     return notes?.filter((note) => {
       return (
-        title === "" ||
-        note.title?.toLowerCase().includes(title.toLowerCase())
+        title === "" || note.title?.toLowerCase().includes(title.toLowerCase())
       );
     });
   }, [title, notes]);
+
+  const sortedNotes = useMemo(() => {
+    return filteredNotes?.sort((a, b) => {
+      if (a.title && b.title) {
+        const titleA = a.title.toLowerCase();
+        const titleB = b.title.toLowerCase();
+        if (titleA < titleB) {
+          return -1;
+        }
+        if (titleA > titleB) {
+          return 1;
+        }
+      }
+      return 0;
+    });
+  }, [filteredNotes]);
 
   return (
     <>
@@ -49,9 +64,9 @@ function NoteList({ notes }: NoteListProps) {
         </Row>
       </Form>
 
-      <Row xs={1} sm={2} xl={4} className='gap-3'>
+      <Row xs={1} sm={2} xl={4} className='gap-3 py-3'>
         {/* mapping through filtered Notes and only show matching notes */}
-        {filteredNotes?.map((note) => (
+        {sortedNotes?.map((note) => (
           <Col key={note.id}>
             <NoteCard id={note.id} title={note.title} />
           </Col>

@@ -13,14 +13,11 @@ function NoteCard({ id, title }: SimplifiedNote) {
     <Card
       as={Link}
       to={`/${id}`}
-      className={`text-reset text-decoration-none  ${styles.card}`}>
-      <Card.Body>
-        <Stack
-          gap={2}
-          className='align-items-center justify-content-center h-100'>
-          <span className='fs-5 py-4 fw-bolder text-capitalize'>
-            {title}
-          </span>
+      className={`text-reset text-decoration-none  ${styles.card}`}
+    >
+      <Card.Body className='p-0'>
+        <Stack gap={2} className='align-items-center justify-content-center'>
+          <span className='fs-5 py-5 fw-bolder text-capitalize'>{title}</span>
         </Stack>
       </Card.Body>
     </Card>

@@ -1,4 +1,4 @@
-import { Button, Row, Stack } from "react-bootstrap";
+import { Button, Container, Row, Stack } from "react-bootstrap";
 import { Col } from "react-bootstrap";
 import { ReactMarkdown } from "react-markdown/lib/react-markdown";
 import { Link, useNavigate } from "react-router-dom";
@@ -15,7 +15,7 @@ function Note({ onDelete }: NoteProps) {
   const navigate = useNavigate();
 
   return (
-    <>
+    <Container className='my-5 p-3 bg-light shadow-lg rounded'>
       <Row className='align-items-center mb-4'>
         <Col>
           <h1 className='text-capitalize'>{note?.title}</h1>
@@ -30,7 +30,8 @@ function Note({ onDelete }: NoteProps) {
                 onDelete(note?.id);
                 navigate("/");
               }}
-              variant='outline-danger'>
+              variant='outline-danger'
+            >
               Delete
             </Button>
             <Link to='/'>
@@ -61,11 +62,12 @@ function Note({ onDelete }: NoteProps) {
                 </code>
               );
             },
-          }}>
+          }}
+        >
           {note?.markdown}
         </ReactMarkdown>
       )}
-    </>
+    </Container>
   );
 }
 
