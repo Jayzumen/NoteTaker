@@ -7,10 +7,18 @@ export type SimplifiedNote = {
 
 function NoteCard({ id, title }: SimplifiedNote) {
   return (
-    <Link to={`/${id}`} className='text-reset text-decoration-none'>
-      <div className='p-0'>
-        <div className='align-items-center justify-content-center gap-2'>
-          <span className='fs-5 py-5 fw-bolder text-capitalize'>{title}</span>
+    <Link to={`/${id}`}>
+      <div className='min-w-[190px] min-h-[125px] border border-gray-500 rounded-md text-center items-center p-8 hover:scale-[1.02] hover:shadow-md transition'>
+        <div className='min-h-[50px] text-center'>
+          <span
+            className={
+              title && title.length <= 24
+                ? `capitalize font-semibold text-lg break-words`
+                : `capitalize font-semibold text-lg truncate block`
+            }
+          >
+            {title}
+          </span>
         </div>
       </div>
     </Link>

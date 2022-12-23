@@ -13,29 +13,39 @@ function Note({ onDelete }: NoteProps) {
   const navigate = useNavigate();
 
   return (
-    <div className='my-5 p-3 bg-light shadow-lg rounded'>
-      <div className='align-items-center mb-4'>
-        <div>
-          <h1 className='text-capitalize'>{note?.title}</h1>
-        </div>
-        <div className=''>
-          <div className=''>
-            <Link to={`/${note?.id}/edit`}>
-              <button className=''>Edit</button>
-            </Link>
+    <div className='my-10 p-5 bg-gray-300 shadow-lg rounded w-[90%] md:w-[60%] '>
+      <div className='md:flex md:justify-between block mb-8'>
+        <h1
+          className={
+            note.title && note.title.length <= 25
+              ? "capitalize mb-5 text-3xl font-semibold lg:max-w-[500px]"
+              : "capitalize mb-5 text-3xl font-semibold lg:max-w-[500px] truncate block"
+          }
+        >
+          {note?.title}
+        </h1>
+        <div className='flex flex-end items-center gap-4'>
+          <Link to={`/${note?.id}/edit`}>
+            <button className='py-2 px-4 rounded-md font-semibold bg-blue-500 text-white hover:bg-blue-600 transition'>
+              Edit
+            </button>
+          </Link>
+          <div>
             <button
               onClick={() => {
                 onDelete(note?.id);
                 navigate("/");
               }}
-              className=''
+              className='py-2 px-4 rounded-md font-semibold bg-red-600 text-white hover:bg-red-700 transition'
             >
               Delete
             </button>
-            <Link to='/'>
-              <button className=''>Back</button>
-            </Link>
           </div>
+          <Link to='/'>
+            <button className='py-2 px-4 rounded-md font-semibold border border-gray-500 bg-gray-300 hover:bg-gray-700 hover:text-white transition'>
+              Back
+            </button>
+          </Link>
         </div>
       </div>
       {/* need to check for Type string to render ReactMarkdown

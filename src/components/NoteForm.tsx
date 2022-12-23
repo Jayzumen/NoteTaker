@@ -22,9 +22,13 @@ function NoteForm({ onSubmit, title = "", markdown = "" }: NoteFormProps) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>Title</label>
+    <form
+      className='w-[80%] md:w-[60%] flex flex-col justify-center px-4 mb-10'
+      onSubmit={handleSubmit}
+    >
+      <label className='font-semibold'>Title</label>
       <input
+        className='outline-none p-2 rounded-md border-2 border-gray-500'
         type='text'
         required
         placeholder='Enter title...'
@@ -32,8 +36,9 @@ function NoteForm({ onSubmit, title = "", markdown = "" }: NoteFormProps) {
         defaultValue={title}
       />
 
-      <label>Markdown</label>
+      <label className='font-semibold mt-4'>Markdown</label>
       <textarea
+        className='outline-none p-2 rounded-md border-2 border-gray-500'
         defaultValue={markdown}
         ref={markdownRef}
         placeholder='Write markdown...'
@@ -41,10 +46,20 @@ function NoteForm({ onSubmit, title = "", markdown = "" }: NoteFormProps) {
         rows={15}
       />
 
-      <div className='justify-content-end '>
-        <button type='submit'>Save</button>
+      <div className='flex justify-end gap-4 mt-4'>
+        <button
+          type='submit'
+          className='px-4 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600 transition'
+        >
+          Save
+        </button>
         <Link to='..'>
-          <button type='button'>Cancel</button>
+          <button
+            type='button'
+            className='px-4 py-2 rounded-md border border-gray-500 bg-gray-300 hover:bg-gray-700 hover:text-white transition'
+          >
+            Cancel
+          </button>
         </Link>
       </div>
     </form>

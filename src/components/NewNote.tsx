@@ -8,7 +8,7 @@ type NewNoteProps = {
 function NewNote({ onSubmit }: NewNoteProps) {
   return (
     <>
-      <h1 className='my-4'>Create new Note</h1>
+      <h1 className='my-10 text-2xl font-semibold'>Create new Note</h1>
       <NoteForm onSubmit={onSubmit} />
     </>
   );

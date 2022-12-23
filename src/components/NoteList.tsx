@@ -35,24 +35,28 @@ function NoteList({ notes }: NoteListProps) {
   }, [filteredNotes]);
 
   return (
-    <>
-      <div className='align-items-center mb-4'>
-        <h1 className='mb-5 w-auto'>NoteTaker</h1>
+    <div className='w-[80%] md:w-[60%]'>
+      <div className='w-full pt-16 block md:flex md:justify-between '>
+        <h1 className='mb-5 text-4xl font-semibold'>NoteTaker</h1>
 
         <Link to='/create'>
-          <button className=''>Create Note</button>
+          <button className=' bg-blue-500 mt-2 rounded-md p-2 text-white hover:bg-blue-600 transition'>
+            Create Note
+          </button>
         </Link>
       </div>
-      <form>
-        <label>Title</label>
+      <form className='w-full md:mt-16 mt-8'>
+        <label className='font-semibold'>Title</label>
         <input
+          className='w-full p-2 rounded-md border-2 border-gray-600 outline-none'
+          placeholder='search for a note...'
           type='text'
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
       </form>
 
-      <div className='gap-3 py-3'>
+      <div className='w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mx-auto mt-8 gap-y-8 gap-x-6 mb-10'>
         {/* mapping through filtered Notes and only show matching notes */}
         {sortedNotes?.map((note) => (
           <div key={note.id}>
@@ -60,7 +64,7 @@ function NoteList({ notes }: NoteListProps) {
           </div>
         ))}
       </div>
-    </>
+    </div>
   );
 }
 
