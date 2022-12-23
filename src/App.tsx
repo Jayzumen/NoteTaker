@@ -1,6 +1,4 @@
-import "bootstrap/dist/css/bootstrap.min.css";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { Container } from "react-bootstrap";
 import NewNote from "./components/NewNote";
 import NoteLayout from "./components/NoteLayout";
 import NoteList from "./components/NoteList";
@@ -74,7 +72,7 @@ function App() {
   }, []);
 
   return (
-    <Container className='my-5 mx-auto'>
+    <div className='my-5 mx-auto'>
       <Routes>
         <Route path='/' element={<NoteList notes={notesToRender} />} />
         <Route path='/create' element={<NewNote onSubmit={createNote} />} />
@@ -85,7 +83,7 @@ function App() {
         {/* invalid path redirects to homescreen */}
         <Route path='*' element={<Navigate to='/' replace />} />
       </Routes>
-    </Container>
+    </div>
   );
 }
 

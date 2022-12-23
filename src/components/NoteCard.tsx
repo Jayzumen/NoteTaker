@@ -1,7 +1,4 @@
-import React from "react";
-import { Card, Stack } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import styles from "../styles/NoteList.module.css";
 
 export type SimplifiedNote = {
   title?: string;
@@ -10,17 +7,13 @@ export type SimplifiedNote = {
 
 function NoteCard({ id, title }: SimplifiedNote) {
   return (
-    <Card
-      as={Link}
-      to={`/${id}`}
-      className={`text-reset text-decoration-none  ${styles.card}`}
-    >
-      <Card.Body className='p-0'>
-        <Stack gap={2} className='align-items-center justify-content-center'>
+    <Link to={`/${id}`} className='text-reset text-decoration-none'>
+      <div className='p-0'>
+        <div className='align-items-center justify-content-center gap-2'>
           <span className='fs-5 py-5 fw-bolder text-capitalize'>{title}</span>
-        </Stack>
-      </Card.Body>
-    </Card>
+        </div>
+      </div>
+    </Link>
   );
 }
 
