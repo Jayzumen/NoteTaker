@@ -72,7 +72,7 @@ function App() {
   }, []);
 
   return (
-    <div className='min-h-screen h-full w-full flex flex-col items-center mx-auto bg-slate-400'>
+    <div className='min-h-screen h-full w-full flex flex-col items-center text-white mx-auto bg-slate-900'>
       <Routes>
         <Route path='/' element={<NoteList notes={notesToRender} />} />
         <Route path='/create' element={<NewNote onSubmit={createNote} />} />

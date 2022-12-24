@@ -13,7 +13,7 @@ function Note({ onDelete }: NoteProps) {
   const navigate = useNavigate();
 
   return (
-    <div className='my-10 p-5 bg-gray-300 shadow-lg rounded w-[90%] md:w-[60%] '>
+    <div className='my-10 p-5 bg-slate-700 shadow-slate-800 shadow-lg rounded w-[90%] lg:w-[60%] '>
       <div className='md:flex md:justify-between block mb-8'>
         <h1
           className={
@@ -42,7 +42,7 @@ function Note({ onDelete }: NoteProps) {
             </button>
           </div>
           <Link to='/'>
-            <button className='py-2 px-4 rounded-md font-semibold border border-gray-500 bg-gray-300 hover:bg-gray-700 hover:text-white transition'>
+            <button className='py-2 px-4 rounded-md font-semibold text-black  bg-slate-300 hover:bg-slate-900 hover:text-white transition'>
               Back
             </button>
           </Link>

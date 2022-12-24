@@ -23,12 +23,12 @@ function NoteForm({ onSubmit, title = "", markdown = "" }: NoteFormProps) {
 
   return (
     <form
-      className='w-[80%] md:w-[60%] flex flex-col justify-center px-4 mb-10'
+      className='w-[80%] lg:w-[60%] flex flex-col justify-center px-4 mb-10'
       onSubmit={handleSubmit}
     >
       <label className='font-semibold'>Title</label>
       <input
-        className='outline-none p-2 rounded-md border-2 border-gray-500'
+        className='outline-none p-2 rounded-md border-2 border-slate-500 text-black'
         type='text'
         required
         placeholder='Enter title...'
@@ -38,25 +38,25 @@ function NoteForm({ onSubmit, title = "", markdown = "" }: NoteFormProps) {
 
       <label className='font-semibold mt-4'>Markdown</label>
       <textarea
-        className='outline-none p-2 rounded-md border-2 border-gray-500'
+        className='outline-none p-2 rounded-md border-2 border-slate-500 text-black'
         defaultValue={markdown}
         ref={markdownRef}
         placeholder='Write markdown...'
         required
-        rows={15}
+        rows={20}
       />
 
       <div className='flex justify-end gap-4 mt-4'>
         <button
           type='submit'
-          className='px-4 py-2 rounded-md bg-blue-500 text-white hover:bg-blue-600 transition'
+          className='px-4 py-2 font-semibold rounded-md bg-blue-500 text-white hover:bg-blue-600 transition'
         >
           Save
         </button>
         <Link to='..'>
           <button
             type='button'
-            className='px-4 py-2 rounded-md border border-gray-500 bg-gray-300 hover:bg-gray-700 hover:text-white transition'
+            className='px-4 py-2 font-semibold rounded-md text-black bg-slate-300 hover:bg-slate-700 hover:text-white transition'
           >
             Cancel
           </button>

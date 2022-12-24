@@ -48,7 +48,7 @@ function NoteList({ notes }: NoteListProps) {
       <form className='w-full md:mt-16 mt-8'>
         <label className='font-semibold'>Title</label>
         <input
-          className='w-full p-2 rounded-md border-2 border-gray-600 outline-none'
+          className='w-full p-2 text-black rounded-md border-2 border-slate-600 outline-none'
           placeholder='search for a note...'
           type='text'
           value={title}
